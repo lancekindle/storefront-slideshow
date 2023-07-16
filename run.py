@@ -2,8 +2,8 @@ import vlc
 import time
 import subprocess
 import os
+import getpass
 
-SCRIPT_HOME = '/home/pi'
 SCRIPT_HOME = os.path.dirname(os.path.abspath(__file__))
 DELAY_BETWEEN_PICS = 5
 
@@ -21,6 +21,11 @@ def enable_smooth_effects():
     pass
 
 def download_media(local_uri, local_folder):
+    # if the trailing slashes are missing, rsync may copy local_uri source folder inside the local folder
+    if not local_uri.endswitch('/'):
+        local_uri += '/'
+    if not local_folder.endswith('/'):
+        local_folder += '/'
     sub = subprocess.Popen(['rsync', '-av', f'{local_uri}', f'{local_folder}'])
     return  # begin slideshow while files download
 
@@ -118,10 +123,11 @@ def show_all_files(slideshow_folder):
 
 
 if __name__ == '__main__':
-    #while True:
         enable_smooth_effects()
-        rsync_download_from = r'\\10.10.10.10\slideshow'
-        slideshow_folder = '/home/pi/Pictures'  # where pictures get put and parsed
+        rsync_download_from = r'/mnt/smb/'
+        USER = getpass.getuser()
+        slideshow_folder = f'/home/{USER}/Pictures'  # where pictures get put and parsed
+    #while True:
         download_media(rsync_download_from, slideshow_folder)
         show_all_files(slideshow_folder)
         

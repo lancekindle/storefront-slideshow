@@ -1,4 +1,4 @@
-sudo apt install inotify-tools
+sudo apt install inotify-tools cifs-utils smbclient
 sudo apt install vim vlc feh rsync cec-utils xcompmgr xdotool wmctrl compton
 
 pip install python-vlc
