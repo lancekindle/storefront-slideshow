@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 import vlc
 import time
 import subprocess
@@ -22,7 +24,7 @@ def enable_smooth_effects():
 
 def download_media(local_uri, local_folder):
     # if the trailing slashes are missing, rsync may copy local_uri source folder inside the local folder
-    if not local_uri.endswitch('/'):
+    if not local_uri.endswith('/'):
         local_uri += '/'
     if not local_folder.endswith('/'):
         local_folder += '/'
