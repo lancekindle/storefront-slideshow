@@ -1,7 +1,9 @@
 sudo apt install inotify-tools cifs-utils smbclient
 sudo apt install vim vlc feh rsync cec-utils xcompmgr xdotool wmctrl compton
 
-pip install python-vlc
+pip install python-vlc python-crontab
+
+sudo python setup.py  # for other setup, needs to be run with sudo to edit crontab
 
 echo "---------------------------------"
 echo "---------------------------------"
