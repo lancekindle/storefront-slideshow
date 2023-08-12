@@ -126,11 +126,11 @@ def show_all_files(slideshow_folder):
 
 if __name__ == '__main__':
         enable_smooth_effects()
-        rsync_download_from = r'/mnt/smb/'
+        rsync_download_from = r'/tmp/smb/'
         USER = getpass.getuser()
         slideshow_folder = f'/home/{USER}/Pictures'  # where pictures get put and parsed
     #while True:
         download_media(rsync_download_from, slideshow_folder)
         show_all_files(slideshow_folder)
-        
+    
 
