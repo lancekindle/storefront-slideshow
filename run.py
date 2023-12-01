@@ -49,6 +49,11 @@ def download_media(local_uri, local_folder):
     return  # begin slideshow while files download
 
 def play_video(video_file):
+    # Ctrl+Q to quit VLC early
+    global time_image_displayed
+    time_remains_before_next_pic = DELAY_BETWEEN_PICS - (time.time() - time_image_displayed)
+    if time_remains_before_next_pic > 0:
+        time.sleep(time_remains_before_next_pic)
     sub = subprocess.Popen(['bash', f'{SCRIPT_HOME}/vlc_single.sh', video_file])
     sub.wait()  # don't return until video finishes playing (and program exits)
 
