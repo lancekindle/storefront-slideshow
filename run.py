@@ -107,7 +107,7 @@ def show_all_files(slideshow_folder):
         filetype = name_and_ext[-1]
         if filetype in BANNED_FILETYPES:
             shown_files.add(file)
-        elif filetype.lower() in ['jpggglg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif', 'svg', 'webp', 'heic', 'heif', 'raw']:
+        elif filetype.lower() in ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif', 'svg', 'webp', 'heic', 'heif', 'raw']:
             show_picture(file)
             shown_files.add(file)
         else:  # vlc will show a picture too, but it's not as clean
@@ -123,7 +123,7 @@ if __name__ == '__main__':
         rsync_download_from = r'/tmp/smb/'  # on startup, this directory will be a SAMBA share
         USER = getpass.getuser()
         slideshow_folder = f'/home/{USER}/Pictures'  # where pictures get put and parsed
-        for _ in range(2):
+        while True:
             download_media(rsync_download_from, slideshow_folder)
             show_all_files(slideshow_folder)
     
