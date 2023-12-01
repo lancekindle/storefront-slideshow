@@ -63,6 +63,7 @@ def trigger_file_watcher(image):
     subprocess.Popen(['cp', image, '9' + image])
 
 def show_picture(image):
+    # press 'Q' to quit Feh early
     global time_image_displayed
     global showing_image
     global obscured_image
